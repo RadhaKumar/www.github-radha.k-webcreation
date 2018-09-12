@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+</body>
+</html>
+
+
+<?
+ session_start();
+  
+  $db = mysqli_connect("localhost","root","","reg");
+
+  if (isset($_POST['getvalue'])) {
+    
+    $firstname= mysql_real_escape_string($_POST[' fname']);
+    
+    $lastname = mysql_real_escape_string($_POST['lname']);
+    $email = mysql_real_escape_string($_POST['mail']);
+    $number = mysql_real_escape_string($_POST['mobile']);
+	$gender = mysql_real_escape_string($_POST['gender']);
+	$dob = mysql_real_escape_string($_POST['dob']);
+    $password = mysql_real_escape_string($_POST['pass']);
+    $confirmpassword = mysql_real_escape_string($_POST['conpass']);
+
+     if($password == $confirmpassword) {
+        //create user
+        $password = md5($password);
+        $confirmpassword = md5($confirmpassword);//hash password before storing for security purpose
+        $sql = "INSERT INTO Register(fname,lname,mail,,mobile,gender,dob,pass,conpass) VALUES ('$firstname','$lastname','$email','$number','$gender','$dob','$password','$confirmpassword')";
+        mysqli_query($db, $sql);
+        $_SESSION['message'] = "You are now logged in";
+        $_SESSION['username'] = $username;
+        header("location: register.php"); 
+    }else{
+        $_SESSION['message'] = "The two passwords do not match";
+
+    }
+ }
+    
+
+?>
+
+<?php
+$firstname= mysqli_real_escape_string($_POST['firstname']);
+    
+    $lastname = mysqli_real_escape_string($_POST['lastname']);
+     $email= mysqli_real_escape_string($_POST['email']);
+    
+    $telephone = mysqli_real_escape_string($_POST['telephone']);
+     $fax= mysqli_real_escape_string($_POST['fax']);
+    
+    $company = mysqli_real_escape_string($_POST['company']);
+    
+    
+    $address_1 = mysqli_real_escape_string($_POST['address_1']);
+     $address_2= mysqli_real_escape_string($_POST['address_2']);
+    
+    $city = mysqli_real_escape_string($_POST['city']);
+     $postcode= mysqli_real_escape_string($_POST['postcode']);
+    
+    $country = mysqli_real_escape_string($_POST['country ']);
+     $zone= mysqli_real_escape_string($_POST['zone']);
+    
+    $password = mysqli_real_escape_string($_POST['password']);
+ $confirm = mysqli_real_escape_string($_POST['confirm']);
+
+$db='reg1'
+$db=new mysqli('localhost','$firstame','$lastname','$email','$telephone','fax','$company','$address_1','$address_2','$city','$postcode','$country','$zone','$password','$confirm',$db)  or die("unable to connect");
+echo"you are logged in";
+?>
+
+
+
+
+<?php
+session_start();
+  
+  $db = mysqli_connect("localhost","root","","reg1");
+
+  if (isset($_POST['getvalue'])) {
+    
+    $firstname= mysqli_real_escape_string($_POST['firstname']);
+    
+    $lastname = mysqli_real_escape_string($_POST['lastname']);
+	 $email= mysqli_real_escape_string($_POST['email']);
+    
+    $telephone = mysqli_real_escape_string($_POST['telephone']);
+	 $fax= mysqli_real_escape_string($_POST['fax']);
+    
+    $company = mysqli_real_escape_string($_POST['company']);
+	
+    
+    $address_1 = mysqli_real_escape_string($_POST['address_1']);
+	 $address_2= mysqli_real_escape_string($_POST['address_2']);
+    
+    $city = mysqli_real_escape_string($_POST['city']);
+	 $postcode= mysqli_real_escape_string($_POST['postcode']);
+    
+    $country = mysqli_real_escape_string($_POST['country ']);
+	 $zone= mysqli_real_escape_string($_POST['zone']);
+    
+    $password = mysqli_real_escape_string($_POST['password']);
+ $confirm = mysqli_real_escape_string($_POST['confirm']);
+
+   if($password==$confirm)
+{
+    $sql="INSERT INTO reg1(firstname,lastname,email,telephone,fax,company,address_1,address_2,city,postcode,country,zone,password,confirm)               VALUES('$firstame','$lastname','$email','$telephone','fax','$company','$address_1','$address_2','$city','$postcode','$country','$zone','$password','$confirm')";
+	mysqli_query($db, $sql);
+        $_SESSION['message'] = "You are now logged in";
+        $_SESSION['username'] = $username;
+        header("location: index.php"); 
+    }else{
+        $_SESSION['message'] = "The two passwords do not match";
+
+    
+        header("location: home.php"); //redirect to next page
+	}
+      
+ }
+ ?>
+
+
+
+<?
+ session_start();
+  
+  $db = mysqli_connect("localhost","root","","reg");
+
+  if (isset($_POST['getvalue'])) {
+    
+    $firstname= mysql_real_escape_string($_POST[' fname']);
+    
+    $lastname = mysql_real_escape_string($_POST['lname']);
+    $email = mysql_real_escape_string($_POST['mail']);
+    $number = mysql_real_escape_string($_POST['mobile']);
+	$gender = mysql_real_escape_string($_POST['gender']);
+	$dob = mysql_real_escape_string($_POST['dob']);
+    $password = mysql_real_escape_string($_POST['pass']);
+    $confirmpassword = mysql_real_escape_string($_POST['conpass']);
+
+     if($password == $confirmpassword) {
+        //create user
+        $password = md5($password);
+        $confirmpassword = md5($confirmpassword);//hash password before storing for security purpose
+        $sql = "INSERT INTO Register(fname,lname,mail,,mobile,gender,dob,pass,conpass) VALUES ('$firstname','$lastname','$email','$number','$gender','$dob','$password','$confirmpassword')";
+        mysqli_query($db, $sql);
+        $_SESSION['message'] = "You are now logged in";
+        $_SESSION['username'] = $username;
+        header("location: register.php"); 
+    }else{
+        $_SESSION['message'] = "The two passwords do not match";
+
+    }
+ }
+    
+
+?>
+
+
